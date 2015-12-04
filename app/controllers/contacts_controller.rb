@@ -6,7 +6,15 @@ class ContactsController < ApplicationController
     def create
         @contact = Contact.new(contact_params)
         if @contact.save
+            #variable for email
+            name = params[:contact][:name]
+            email = params[:contact][:email]
+            body = params[:contact][:comments]
+            #send email
+            ContactMailer.contact_email(name,email,body)
+            #set Flash message to success
             flash[:success] = 'Messsage Sent'
+            #redirect to same page.
             redirect_to new_contact_path
         else
             flash[:danger] = 'Error Occurred. Message not sent.'
@@ -15,6 +23,7 @@ class ContactsController < ApplicationController
     end
 
     private
+    #Need to whitelist parameters from the contact form
         def contact_params
             params.require(:contact).permit(:name, :email, :comments)
         end
