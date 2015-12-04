@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
     def create
         @contact = Contact.new(contact_params)
         if @contact.save
-            #variable for email
+            #set variables for mailer arguments
             name = params[:contact][:name]
             email = params[:contact][:email]
             body = params[:contact][:comments]
@@ -17,6 +17,7 @@ class ContactsController < ApplicationController
             #redirect to same page.
             redirect_to new_contact_path
         else
+            #on error, set flash message to error and refresh page
             flash[:danger] = 'Error Occurred. Message not sent.'
             redirect_to new_contact_path
         end
