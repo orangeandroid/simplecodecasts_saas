@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
             email = params[:contact][:email]
             body = params[:contact][:comments]
             #send email
-            ContactMailer.contact_email(name,email,body)
+            ContactMailer.contact_email(name, email, body)
             #set Flash message to success
             flash[:success] = 'Messsage Sent'
             #redirect to same page.
