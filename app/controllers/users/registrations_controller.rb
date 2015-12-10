@@ -1,4 +1,4 @@
-class Users::ResgistrationsController < Devise::ResgistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
     def create
         #import the Devise create method so we can just add to it and not totally overwrite
         super do |resource|
