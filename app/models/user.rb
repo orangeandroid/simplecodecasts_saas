@@ -8,8 +8,12 @@ class User < ActiveRecord::Base
   
   
   def save_with_payment
+    #Stripe.api_version = '2015-02-16'
     if valid?
-      customer = Strip::Customer.create(description: email, plan: plan_id, card: stripe_card_token)
+      customer = Stripe::Customer.create(
+        description: email, 
+        plan: plan_id, 
+        source: stripe_card_token)
       self.stripe_customer_token = customer.id
       save!
     end
