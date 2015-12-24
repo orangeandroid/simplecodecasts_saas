@@ -56,3 +56,5 @@ gem 'paperclip', '4.2.1'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+#Bootstrap auto-prefixer adds vendor prefixes to your css
+# get it from bootstrap
